@@ -162,6 +162,18 @@ var (
 		"If enabled, pilot will start a controller that assigns IP addresses to ServiceEntry which do not have a user-supplied IP. "+
 			"This, when combined with DNS capture allows for tcp routing of traffic sent to the ServiceEntry.").Get()
 
+	IPAutoAllocateIPv4CIDR = env.Register(
+		"PILOT_IP_AUTOALLOCATE_IPV4_CIDR",
+		"240.240.0.0/16",
+		"The IPv4 CIDR range the IP auto-allocator will use to allocate IPs for ServiceEntry resources. ",
+	).Get()
+
+	IPAutoAllocateIPv6CIDR = env.Register(
+		"PILOT_IP_AUTOALLOCATE_IPV6_CIDR",
+		"2001:2::/48",
+		"The IPv6 CIDR range the IP auto-allocator will use to allocate IPs for ServiceEntry resources. ",
+	).Get()
+
 	// EnableUnsafeAssertions enables runtime checks to test assertions in our code. This should never be enabled in
 	// production; when assertions fail Istio will panic.
 	EnableUnsafeAssertions = env.Register(
